@@ -1,4 +1,4 @@
-<h1>Create product</h1>
+<h1>{{headerTitle}}</h1>
 <div class="form-group row">
     <label for="productName" class="col-2 col-form-label">Name</label>
     <div class="col-10">
@@ -11,6 +11,17 @@
         <input class="form-control" type="number" [(ngModel)]="productPrice" id="productPrice">
     </div>
 </div>
+<div class="form-group row" *ngIf="!isCreate">
+    <label class="col-2">Deleted</label>
+    <div class="col-10">
+        <div class="form-check">
+            <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="productDeleted">
+          </label>
+        </div>
+    </div>
+</div>
 <div class="form-group">
-    <button class="btn btn-secondary" (click)="create()">Create</button>
+    <button *ngIf="isCreate" class="btn btn-secondary" (click)="create()">Create</button>
+    <button *ngIf="!isCreate" class="btn btn-secondary" (click)="update()">Update</button>
 </div>

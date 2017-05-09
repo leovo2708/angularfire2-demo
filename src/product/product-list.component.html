@@ -1,6 +1,8 @@
 <h1>{{headerTitle}}</h1>
 <div class="form-group">
     <button routerLink="/product/new" class="btn btn-secondary">New</button>
+    <button *ngIf="isArchived" routerLink="/product/list" class="btn btn-secondary">View list</button>
+    <button *ngIf="!isArchived" routerLink="/product/archived" class="btn btn-secondary">View archived</button>
 </div>
 <table class="table">
     <thead class="thead-default">
@@ -10,6 +12,6 @@
             <th></th>
         </tr>
     </thead>
-    <tbody app-product-item *ngFor="let product of products | async" [product]="product">
+    <tbody app-product-item *ngFor="let product of products | async" [product]="product" (remove)="remove(product)" (edit)="edit(product)">
     </tbody>
 </table>

@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { FirebaseProduct } from './firebase-product';
-import { ProductListRouteData } from './product-list-route-data';
 import { ProductService } from './product.service';
 
 @Component({
@@ -10,18 +9,34 @@ import { ProductService } from './product.service';
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
     headerTitle: string;
     products: FirebaseListObservable<FirebaseProduct[]>;
+    isArchived = false;
 
     constructor(
+        private router: Router,
         private route: ActivatedRoute,
         private service: ProductService
-    ) {
+    ) { }
+
+    ngOnInit() {
         this.route.data.subscribe(data => {
-            const routeData = data as ProductListRouteData;
-            this.products = routeData.isArchived ? this.service.archivedProducts : this.service.products;
-            this.headerTitle = routeData.isArchived ? 'Archived List' : 'Product List';
+            this.isArchived = data.isArchived;
+            this.products = this.isArchived ? this.service.archivedProducts : this.service.mainProducts;
+            this.headerTitle = this.isArchived ? 'Archived List' : 'Product List';
         });
+    }
+
+    remove(product: FirebaseProduct) {
+        if (this.isArchived) {
+            this.service.removeProduct(product);
+        } else {
+            this.service.archiveProduct(product);
+        }
+    }
+
+    edit(product: FirebaseProduct) {
+        this.router.navigate(['/product', product.$key]);
     }
 }

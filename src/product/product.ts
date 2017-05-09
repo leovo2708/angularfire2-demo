@@ -5,8 +5,9 @@ export class Product implements FirebaseProduct {
     name: string;
     price: number;
 
-    constructor(name: string, price: number) {
+    constructor(name: string, price: number, deleted = false) {
         this.name = name;
         this.price = price;
+        this.deleted = deleted;
     }
 }

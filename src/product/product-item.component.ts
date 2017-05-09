@@ -9,12 +9,6 @@ import { FirebaseProduct } from './firebase-product';
 })
 export class ProductItemComponent {
     @Input() product: FirebaseProduct;
-    @Output() delete = new EventEmitter(false);
-    @Output() update = new EventEmitter(false);
-
-    editing = false;
-
-    toggleEditing() {
-        this.editing = !this.editing;
-    }
+    @Output() remove = new EventEmitter(false);
+    @Output() edit = new EventEmitter(false);
 }

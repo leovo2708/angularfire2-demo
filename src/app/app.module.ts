@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { ProductModule } from '../product';
+import { AppRoutingModule } from './app-routing.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/product/list', pathMatch: 'full' },
