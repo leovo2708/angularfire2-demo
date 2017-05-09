@@ -1,0 +1,15 @@
+<h1>{{headerTitle}}</h1>
+<div class="form-group">
+    <button routerLink="/product/new" class="btn btn-secondary">New</button>
+</div>
+<table class="table">
+    <thead class="thead-default">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody app-product-item *ngFor="let product of products | async" [product]="product">
+    </tbody>
+</table>

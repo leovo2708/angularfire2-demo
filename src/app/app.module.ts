@@ -2,23 +2,27 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { environment } from '../environments/environment';
+import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { ProductModule } from '../product';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/product/list', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(environment.firebase, 'angularfire2-demo'), // imports firebase/app needed for everything
-    AngularFireDatabaseModule, // imports firebase/database, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    RouterModule.forRoot(routes),
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]

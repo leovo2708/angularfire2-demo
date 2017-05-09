@@ -1,0 +1,16 @@
+<h1>Create product</h1>
+<div class="form-group row">
+    <label for="productName" class="col-2 col-form-label">Name</label>
+    <div class="col-10">
+        <input class="form-control" type="text" [(ngModel)]="productName" id="productName">
+    </div>
+</div>
+<div class="form-group row">
+    <label for="productPrice" class="col-2 col-form-label">Price</label>
+    <div class="col-10">
+        <input class="form-control" type="number" [(ngModel)]="productPrice" id="productPrice">
+    </div>
+</div>
+<div class="form-group">
+    <button class="btn btn-secondary" (click)="create()">Create</button>
+</div>

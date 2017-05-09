@@ -1,0 +1,28 @@
+<tr>
+    <td [ngSwitch]="editing">
+        <input *ngSwitchCase="true" type="text" class="form-control" [(ngModel)]="product.name" />
+        <div *ngSwitchCase="false">{{product.name}}</div>
+    </td>
+    <td [ngSwitch]="editing">
+        <input *ngSwitchCase="true" type="number" class="form-control" [(ngModel)]="product.price" />
+        <div *ngSwitchCase="false">{{product.price}}</div>
+    </td>
+    <td [ngSwitch]="editing">
+        <div *ngSwitchCase="true">
+            <button type="button" class="btn btn-secondary" aria-label="Save changes" (click)="update.emit()">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-secondary" aria-label="Stop editing" (click)="toggleEditing()">
+              <i class="fa fa-ban" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div *ngSwitchCase="false">
+            <button type="button" class="btn btn-secondary" aria-label="Update product" (click)="toggleEditing()">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-secondary" aria-label="Remove product" (click)="remove.emit()">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </div>
+    </td>
+</tr>
