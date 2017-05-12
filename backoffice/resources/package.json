@@ -1,16 +1,7 @@
 {
-  "name": "angularfire2-demo",
+  "name": "backoffice",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "compile": "ngc",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
   "private": true,
   "peerDependencies": {
     "@angular/common": "^4.0.0",
@@ -28,5 +19,6 @@
     "font-awesome": "^4.7.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
-  }
+  },
+  "typings": "index.d.ts"
 }

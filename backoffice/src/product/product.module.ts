@@ -6,13 +6,13 @@ import { ProductItemComponent } from './product-item.component';
 import { ProductService } from './product.service';
 import { ProductRoutingModule } from './product-routing.module';
 import { CreateProductComponent } from './create-product.component';
-import { FirebaseModule } from '../firebase';
+import { AngularFireModule } from 'angularfire2';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        FirebaseModule,
+        AngularFireModule,
         ProductRoutingModule
     ],
     declarations: [
